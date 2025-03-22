@@ -32,6 +32,16 @@ let package = Package(name: "AFNetworking",
                                   .watchOS(.v2)],
                       products: [.library(name: "AFNetworking",
                                           targets: ["AFNetworking"])],
-                      targets: [.target(name: "AFNetworking",
-                                        path: "AFNetworking",
-                                        publicHeadersPath: "")])
+                      targets: [
+                        .target(name: "AFNetworking",
+                                path: "AFNetworking",
+                                publicHeadersPath: "."
+                               ),
+                        .target(name: "UIKit_AFNetworking",
+                                dependencies: [
+                                    .target(name: "AFNetworking")
+                                ],
+                                path: "UIKit+AFNetworking",
+                                publicHeadersPath: "."
+                               )
+                      ])
